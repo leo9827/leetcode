@@ -11,7 +11,9 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int[] index = new int[128];
         // try to extend the range [i, j]
         for (int j = 0, i = 0; j < n; j++) {
+            System.out.println("i===" + i);
             i = Math.max(index[s.charAt(j)], i);
+            System.out.println("i===" + i);
             ans = Math.max(ans, j - i + 1);
             System.out.println("s.charAt(j):" + s.charAt(j));
             System.out.println("index[s.charAt(j)]:" + index[s.charAt(j)]);
