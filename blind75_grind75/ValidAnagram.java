@@ -36,14 +36,14 @@ public class ValidAnagram {
     public boolean isAnagram2(String s, String t) {
         // 1.hashset
         // 2.arr
-        var freqs = new int[26];
-        var freqt = new int[26];
+        int[] freqs = new int[26];
+        int[] freqt = new int[26];
 
-        for (var c : s.toCharArray()) {
+        for (char c : s.toCharArray()) {
             freqs[c - 'a']++;
         }
 
-        for (var c : t.toCharArray()) {
+        for (char c : t.toCharArray()) {
             freqt[c - 'a']++;
         }
 
