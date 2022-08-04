@@ -43,8 +43,8 @@ class Solution {
         map.put("{", "}");
         Stack<String> stk = new Stack<>();
 
-        for (var i : s.toCharArray()) {
-            var item = Character.toString(i);
+        for (char i : s.toCharArray()) {
+            String item = Character.toString(i);
             if (map.containsKey(item)) {
                 stk.push(item);
             } else if (stk.empty()) {
