@@ -29,7 +29,7 @@ public class CombinationSum {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        List<Integer> cur = new ArrayList();
+        List<Integer> cur = new ArrayList<>();
         backtrack(candidates, target, ans, cur, 0);
         return ans;
     }
@@ -42,7 +42,7 @@ public class CombinationSum {
             int index
     ) {
         if (target == 0) {
-            ans.add(new ArrayList(cur));
+            ans.add(new ArrayList<>(cur));
         } else if (target < 0 || index >= candidates.length) {
             return;
         } else {
