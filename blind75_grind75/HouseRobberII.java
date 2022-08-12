@@ -65,9 +65,9 @@ public class HouseRobberII {
         );
     }
     public int robTabulation(int[] nums, int idx) {
-        int[] table = new int[nums.length];
+        int[] table = new int[nums.length]; // nums.length 而不是 nums.length+1是重点
         table[1] = nums[idx];
-        for (int i = 1; i < nums.length - 1; i++) {
+        for (int i = 1; i < nums.length - 1; i++) { // nums.length - 1而不是nums.length是重点
             table[i+1] = Math.max(table[i], table[i-1] + nums[idx+i]);
         }
         return table[nums.length-1];
