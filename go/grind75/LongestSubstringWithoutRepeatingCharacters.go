@@ -1,4 +1,4 @@
-package main
+package grind75
 
 func lengthOfLongestSubstring(s string) int {
 	if len(s) < 2 {

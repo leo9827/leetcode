@@ -1,4 +1,4 @@
-package main
+package grind75
 
 type LRUCache struct {
 	Head *Node

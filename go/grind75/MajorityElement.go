@@ -1,4 +1,4 @@
-package main
+package grind75
 
 func majorityElement(nums []int) int {
 	vote := 0

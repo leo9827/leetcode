@@ -1,4 +1,4 @@
-package main
+package grind75
 
 func containsDuplicate(nums []int) bool {
 	table := make(map[int]int)

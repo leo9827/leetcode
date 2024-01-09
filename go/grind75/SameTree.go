@@ -1,4 +1,4 @@
-package main
+package grind75
 
 func isSameTree(left *TreeNode, right *TreeNode) bool {
 	if left == nil || right == nil {
