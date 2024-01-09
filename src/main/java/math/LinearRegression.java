@@ -1,4 +1,4 @@
-package demo;
+package math;
 
 import org.apache.commons.math3.linear.*;
 
