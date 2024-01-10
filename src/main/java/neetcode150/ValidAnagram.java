@@ -1,4 +1,4 @@
-package neetcode150.arrayandhashing;
+package neetcode150;
 
 // https://leetcode.com/problems/valid-anagram/
 public class ValidAnagram {
