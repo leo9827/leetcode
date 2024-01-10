@@ -1,5 +1,6 @@
 package neetcode150;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
@@ -22,7 +23,7 @@ import java.util.LinkedList;
  * 1 <= temperatures.length <= 105
  * 30 <= temperatures[i] <= 100
  */
-public class DailyTemperature {
+public class DailyTemperatures {
 
   /**
    * example:  [73,74,75,71,69,78]
@@ -51,7 +52,7 @@ public class DailyTemperature {
     int[] ans = new int[temperatures.length];
     LinkedList<Integer> l = new LinkedList<>();
     for (int i = 0; i < temperatures.length; i++) {
-      if (temperatures[i] > temperatures[l.getLast()]) {
+      if (! l.isEmpty() && temperatures[i] > temperatures[l.getLast()]) {
         while (!l.isEmpty() && temperatures[i] > temperatures[l.getLast()]) {
           int prevIdx = l.getLast(); // eq stack.pop()
           l.removeLast();
@@ -61,5 +62,15 @@ public class DailyTemperature {
       l.addLast(i);
     }
     return ans;
+  }
+
+  public static void main(String[] args) {
+    DailyTemperatures d = new DailyTemperatures();
+    int[] case1 = new int[]{73,74,75,71,69,72,76,73};
+    int[] expect1 = new int[]{1,1,4,2,1,1,0,0};
+    System.out.println(Arrays.equals(d.dailyTemperatures(case1), expect1));
+    int[] case2 = new int[]{30,40,50,60};
+    int[] expect2 = new int[]{1,1,1,0};
+    System.out.println(Arrays.equals(d.dailyTemperatures(case2), expect2));
   }
 }
