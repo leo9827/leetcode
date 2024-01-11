@@ -22,25 +22,29 @@ Constraints:
 s1 and s2 consist of lowercase English letters.
  */
 public class PermutationinString {
+    // 这里的思路是，将s1放入到一个 table(k:char-v:出现次数count) 中，这样就可以忽略它所有的排列
+    // 然后再以同样的窗口长度，移动窗口取出 s2 的子串放入同样的 table 中，通过两个 table 相等则 s1 是 s2 的子串
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length()) return false;
-        int[] arr1 = new int[26];
+        int[] arr1 = new int[26]; // 用作hash + count来比较是否重复
         int[] arr2 = new int[26];
         for (int i = 0; i < s1.length(); i++) {
             arr1[s1.charAt(i)- 'a']++;
             arr2[s2.charAt(i)- 'a']++;
         }
+        // edge case: s1 == s2
         if (Arrays.equals(arr1, arr2)) return true;
 
-        int front = 0;
-        int back = s1.length();
-        while(back < s2.length()){
-            arr2[s2.charAt(front) - 'a']--;
-            arr2[s2.charAt(back) - 'a']++;
+        int winBegin = 0;
+        int winlen = s1.length();
+        // window: front-back, front start from 0
+        while(winlen < s2.length()){
+            arr2[s2.charAt(winBegin) - 'a']--;
+            arr2[s2.charAt(winlen) - 'a']++;
 
             if(Arrays.equals(arr1, arr2)) return true;
-            front++;
-            back++;
+            winBegin++;
+            winlen++;
         }
         return false;
     }
