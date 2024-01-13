@@ -34,7 +34,7 @@ import java.util.Map;
  Input: head = [[1,1],[2,1]]
  Output: [[1,1],[2,1]]
  */
-public class CopyListwithRandomPointer {
+public class CopyListWithRandomPointer {
 
     public Node copyRandomList(Node head) {
         Map<Node, Node> cache = new HashMap<>();

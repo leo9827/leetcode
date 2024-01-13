@@ -27,7 +27,7 @@ package neetcode150;
  * How can we prove that at least one duplicate number must exist in nums?
  * Can you solve the problem in linear runtime complexity?
  */
-public class FindtheDuplicateNumber {
+public class FindTheDuplicateNumber {
     public int findDuplicate(int[] nums) {
         int slow = nums[0];
         int fast = nums[nums[0]];
@@ -50,7 +50,7 @@ public class FindtheDuplicateNumber {
     }
 
     public static void main(String[] args) {
-        FindtheDuplicateNumber f = new FindtheDuplicateNumber();
+        FindTheDuplicateNumber f = new FindTheDuplicateNumber();
         int[] case1 = new int[]{1, 3, 4, 2, 2};
         int ans1 = 2;
         System.out.println(f.findDuplicate(case1) == ans1);
