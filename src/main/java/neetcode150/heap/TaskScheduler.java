@@ -84,6 +84,12 @@ public class TaskScheduler {
         }
     }
 
+    public static void main(String[] args) {
+        TaskScheduler t = new TaskScheduler();
+        int ret = t.leastInterval(new char[]{'A','A','A','B','B','B'}, 2);
+        System.out.println(ret == 8);
+    }
+
     public class Solution {
         public int leastInterval(char[] tasks, int n) {
             int[] counter = new int[26];
