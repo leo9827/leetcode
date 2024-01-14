@@ -30,12 +30,14 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void quickSort(int[] nums, int l, int r) {
             if (l >= r) return;
             int mid = partition(nums, l, r);
             quickSort(nums, l, mid);
             quickSort(nums, mid + 1, r);
         }
+
         private int partition(int[] nums, int l, int r) {
             int pivot = nums[l];
             while (l < r) {
@@ -48,6 +50,7 @@ public class SortAnArray {
             return l;
         }
     }
+
     class TopDownMergeSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
@@ -56,6 +59,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void mergeSort(int[] nums, int l, int r) {
             if (l >= r) return;
             int mid = l + (r - l) / 2;
@@ -63,6 +67,7 @@ public class SortAnArray {
             mergeSort(nums, mid + 1, r);
             merge(nums, l, r);
         }
+
         private void merge(int[] nums, int l, int r) {
             int mid = l + (r - l) / 2;
             int[] tmp = new int[r - l + 1];
@@ -77,6 +82,7 @@ public class SortAnArray {
             System.arraycopy(tmp, 0, nums, l, r - l + 1);
         }
     }
+
     class BottomUpMergeSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
@@ -85,6 +91,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void mergeSort2(int[] nums) {
             for (int size = 1; size < nums.length; size *= 2) {
                 for (int i = 0; i < nums.length - size; i += 2 * size) {
@@ -94,6 +101,7 @@ public class SortAnArray {
                 }
             }
         }
+
         private void merge2(int[] nums, int l, int mid, int r) {
             int[] tmp = new int[r - l + 1];
             int i = l, j = mid + 1, k = 0;
@@ -107,6 +115,7 @@ public class SortAnArray {
             System.arraycopy(tmp, 0, nums, l, r - l + 1);
         }
     }
+
     class HeapSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
@@ -115,6 +124,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void heapSort(int[] nums) {
             for (int i = nums.length / 2 - 1; i >= 0; i--) {
                 heapify(nums, i, nums.length - 1);
@@ -124,6 +134,7 @@ public class SortAnArray {
                 heapify(nums, 0, i - 1);
             }
         }
+
         private void heapify(int[] nums, int i, int end) {
             while (i <= end) {
                 int l = 2 * i + 1, r = 2 * i + 2;
@@ -135,12 +146,14 @@ public class SortAnArray {
                 i = maxIndex;
             }
         }
+
         private void swap(int[] nums, int i, int j) {
             int tmp = nums[i];
             nums[i] = nums[j];
             nums[j] = tmp;
         }
     }
+
     class SelectSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
@@ -149,6 +162,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void selectionSort(int[] nums) {
             for (int i = 0; i < nums.length; i++) {
                 int minIndex = i;
@@ -158,12 +172,14 @@ public class SortAnArray {
                 if (minIndex != i) swap(nums, i, minIndex);
             }
         }
+
         private void swap(int[] nums, int i, int j) {
             nums[i] = nums[i] ^ nums[j];
             nums[j] = nums[i] ^ nums[j];
             nums[i] = nums[i] ^ nums[j];
         }
     }
+
     class InsertionSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
@@ -172,6 +188,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void insertionSort(int[] nums) {
             for (int i = 1; i < nums.length; i++) {
                 for (int j = i; j >= 1; j--) {
@@ -180,6 +197,7 @@ public class SortAnArray {
                 }
             }
         }
+
         private void swap(int[] nums, int i, int j) {
             nums[i] = nums[i] ^ nums[j];
             nums[j] = nums[i] ^ nums[j];
@@ -195,6 +213,7 @@ public class SortAnArray {
             for (int i : nums) res.add(i);
             return res;
         }
+
         private void bubbleSort(int[] nums) {
             for (int k = nums.length - 1; k >= 1; k--) {
                 for (int i = 0; i < k; i++) {
@@ -202,6 +221,7 @@ public class SortAnArray {
                 }
             }
         }
+
         private void swap(int[] nums, int i, int j) {
             nums[i] = nums[i] ^ nums[j];
             nums[j] = nums[i] ^ nums[j];
