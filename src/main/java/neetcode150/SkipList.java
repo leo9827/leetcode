@@ -25,6 +25,7 @@ public class SkipList {
             System.out.println(keyToSearch + " not found in the skip list.");
         }
     }
+
     static class Node {
         int key;
         Node[] forward;
@@ -36,14 +37,14 @@ public class SkipList {
     }
 
     private static final double PROBABILITY = 0.5;
-    private int max_height;
+    private final Node header;
     private int level;
-    private Node header;
+    private final int maxHeight;
 
-    public SkipList(int max_height) {
-        this.max_height = max_height;
+    public SkipList(int maxHeight) {
+        this.maxHeight = maxHeight;
         this.level = 0;
-        this.header = createNode(Integer.MIN_VALUE, max_height);
+        this.header = createNode(Integer.MIN_VALUE, maxHeight);
     }
 
     private Node createNode(int key, int height) {
@@ -53,14 +54,14 @@ public class SkipList {
     private int randomHeight() {
         int height = 1;
         Random rand = new Random();
-        while (rand.nextDouble() < PROBABILITY && height < max_height) {
+        while (rand.nextDouble() < PROBABILITY && height < maxHeight) {
             height++;
         }
         return height;
     }
 
     public void insert(int key) {
-        Node[] update = new Node[max_height + 1];
+        Node[] update = new Node[maxHeight + 1];
         Node current = header;
 
         for (int i = level; i >= 0; i--) {
