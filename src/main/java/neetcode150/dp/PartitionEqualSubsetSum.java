@@ -23,6 +23,7 @@ public class PartitionEqualSubsetSum {
 
     public boolean canPartition(int[] nums) {
 
+        return false;
     }
 
     public static void main(String[] args) {
