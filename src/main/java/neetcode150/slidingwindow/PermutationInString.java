@@ -21,7 +21,7 @@ Constraints:
 1 <= s1.length, s2.length <= 104
 s1 and s2 consist of lowercase English letters.
  */
-public class PermutationinString {
+public class PermutationInString {
     // 这里的思路是，将s1放入到一个 table(k:char-v:出现次数count) 中，这样就可以忽略它所有的排列
     // 然后再以同样的窗口长度，移动窗口取出 s2 的子串放入同样的 table 中，通过两个 table 相等则 s1 是 s2 的子串
     public boolean checkInclusion(String s1, String s2) {
@@ -105,7 +105,7 @@ public class PermutationinString {
 
     public static void main(String[] args) {
         String s1 = "ab", s2 = "eidbaooo";
-        PermutationinString p = new PermutationinString();
+        PermutationInString p = new PermutationInString();
         System.out.println(p.checkInclusion(s1, s2));
         String ss1 = "adc", ss2 =  "dcda";
         System.out.println(p.checkInclusion(ss1, ss2));
