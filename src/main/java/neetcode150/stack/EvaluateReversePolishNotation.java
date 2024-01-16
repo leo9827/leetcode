@@ -99,6 +99,7 @@ import java.util.Stack;
  * 适合用栈操作运算：遇到数字则入栈；遇到算符则取出栈顶两个数字进行计算，并将结果压入栈中
  */
 public class EvaluateReversePolishNotation {
+
     Set<String> markset = new HashSet<>(Arrays.asList("+", "-", "*", "/"));
 
     public int evalRPN(String[] tokens) {
