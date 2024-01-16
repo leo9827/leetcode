@@ -1,4 +1,4 @@
-package blind75;
+package blind75.dp;
 
 import java.util.Arrays;
 import java.util.Objects;

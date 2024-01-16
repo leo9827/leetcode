@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.bit;
 
 /*
 136. Single Number

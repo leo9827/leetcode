@@ -1,4 +1,4 @@
-package blind75;
+package blind75.interval;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.linkedlist;
 
 import java.util.HashMap;
 import java.util.Map;

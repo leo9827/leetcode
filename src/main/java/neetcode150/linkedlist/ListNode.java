@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.linkedlist;
 
 public class ListNode {
     int val;

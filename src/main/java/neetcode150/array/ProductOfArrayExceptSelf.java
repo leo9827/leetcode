@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.array;
 
 // https://leetcode.com/problems/product-of-array-except-self/
 public class ProductOfArrayExceptSelf {

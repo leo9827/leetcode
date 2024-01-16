@@ -1,4 +1,4 @@
-package blind75;
+package neetcode150.twopointer;
 
 public class ContainerWithMostWater {
 

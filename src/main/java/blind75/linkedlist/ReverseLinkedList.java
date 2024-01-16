@@ -1,4 +1,4 @@
-package blind75;
+package blind75.linkedlist;
 
 public class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {

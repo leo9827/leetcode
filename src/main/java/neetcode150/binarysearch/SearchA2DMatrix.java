@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.binarysearch;
 /**
  * <a href="https://leetcode.com/problems/search-a-2d-matrix/">search-a-2d-matrix</a>
  * You are given an m x n integer matrix, matrix with the following two properties:

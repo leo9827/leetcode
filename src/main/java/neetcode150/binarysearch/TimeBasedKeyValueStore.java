@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.binarysearch;
 
 import java.util.HashMap;
 import java.util.Map;

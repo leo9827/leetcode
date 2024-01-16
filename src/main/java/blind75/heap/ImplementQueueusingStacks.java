@@ -1,4 +1,4 @@
-package blind75;
+package blind75.heap;
 
 import java.util.Stack;
 

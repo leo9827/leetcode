@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.stack;
 /**
  * 150. Evaluate Reverse Polish Notation
  * <a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/">evaluate-reverse-polish-notation</a>

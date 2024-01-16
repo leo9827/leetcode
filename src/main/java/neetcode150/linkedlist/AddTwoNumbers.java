@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.linkedlist;
 
 /**
  * 2. Add Two Numbers

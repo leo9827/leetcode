@@ -1,4 +1,4 @@
-package blind75;
+package blind75.tree;
 
 public class SameTree {
     public boolean isSameTree(TreeNode left, TreeNode right) {

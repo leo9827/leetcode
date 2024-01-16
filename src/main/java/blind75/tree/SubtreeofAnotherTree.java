@@ -1,4 +1,4 @@
-package blind75;
+package blind75.tree;
 
 public class SubtreeofAnotherTree {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {

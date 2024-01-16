@@ -1,4 +1,4 @@
-package blind75;
+package blind75.string;
 
 import java.util.HashSet;
 import java.util.Set;

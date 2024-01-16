@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.linkedlist;
 
 /**
  * Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.

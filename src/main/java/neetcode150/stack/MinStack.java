@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.stack;
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();

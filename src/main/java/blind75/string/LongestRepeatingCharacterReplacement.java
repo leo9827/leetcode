@@ -1,4 +1,4 @@
-package blind75;
+package blind75.string;
 
 public class LongestRepeatingCharacterReplacement {
 
