@@ -1,11 +1,38 @@
 package neetcode150.array;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-// https://leetcode.com/problems/group-anagrams/
+/**
+ * <a href="https://leetcode.com/problems/group-anagrams/">49. 字母异位词分组</a>
+ * <p>
+ * 中等
+ * <p>
+ * 给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
+ * <p>
+ * 字母异位词 是由重新排列源单词的所有字母得到的一个新单词。
+ * <p>
+ * <p>
+ * <p>
+ * 示例 1:
+ * <p>
+ * 输入: strs = ["eat", "tea", "tan", "ate", "nat", "bat"] <p>
+ * 输出: [["bat"],["nat","tan"],["ate","eat","tea"]] <p>
+ * 示例 2:
+ * <p>
+ * 输入: strs = [""] <p>
+ * 输出: [[""]] <p>
+ * 示例 3:
+ * <p>
+ * 输入: strs = ["a"]
+ * 输出: [["a"]]
+ * <p>
+ * <p>
+ * 提示：
+ * <p>
+ * 1 <= strs.length <= 104
+ * 0 <= strs[i].length <= 100
+ * strs[i] 仅包含小写字母
+ */
 public class GroupAnagrams {
 
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -31,5 +58,21 @@ public class GroupAnagrams {
         return String.valueOf(arr);
     }
 
+    class Solution2 {
+        public List<List<String>> groupAnagrams(String[] strs) {
+            if (strs.length == 0) return new ArrayList<>(0);
+            Map<String, List> map = new HashMap<>();
+            for (String str : strs) {
+                char[] charArr = str.toCharArray();
+                Arrays.sort(charArr);
+                String key = String.valueOf(charArr);
+                if (!map.containsKey(key)) {
+                    map.put(key, new ArrayList());
+                }
+                map.get(key).add(str);
+            }
+            return new ArrayList(map.values());
+        }
+    }
 
 }
