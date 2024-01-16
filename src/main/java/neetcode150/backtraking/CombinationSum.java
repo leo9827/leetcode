@@ -1,4 +1,4 @@
-package blind75.dp;
+package neetcode150.backtraking;
 
 import java.util.ArrayList;
 import java.util.Arrays;

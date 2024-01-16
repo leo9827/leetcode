@@ -1,4 +1,4 @@
-package blind75;
+package blind75.linkedlist;
 
 import java.util.Hashtable;
 
