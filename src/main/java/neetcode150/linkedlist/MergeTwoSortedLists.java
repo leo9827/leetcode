@@ -28,7 +28,7 @@ public class MergeTwoSortedLists {
             curr = curr.next;
         }
 
-        if (list1 == null) { // todo
+        if (list1 == null) {
             curr.next = list2;
         } else {
             curr.next = list1;
