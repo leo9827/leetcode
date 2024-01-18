@@ -1,5 +1,6 @@
 package neetcode150.dp;
 
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -9,8 +10,8 @@ import java.util.Map;
 public class ClimbingStairs {
 
     public int climbStairs(int n) {
-//        return climbStairs(n, new Hashtable<>());
-        return climbStairsTabulation(n);
+        return climbStairs(n, new Hashtable<>());
+//        return climbStairsTabulation(n);
     }
 
     public int climbStairs(int n, Map<Integer, Integer> memo) {
