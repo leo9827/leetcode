@@ -53,7 +53,7 @@ import java.util.Random;
  * 1 <= w[i] <= 105
  * pickIndex 将被调用不超过 104 次
  */
-public class RandomPickwithWeight {
+public class RandomPickWithWeight {
 
     static class Solution {
 
