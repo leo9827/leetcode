@@ -67,41 +67,42 @@ public class MergeKSortedLists {
 
     static class Solution {
         public ListNode mergeKLists(ListNode[] lists) {
-            if (lists == null || lists.length == 0) {
-                return null;
-            }
-            return mergeKListsHelper(lists, 0, lists.length - 1);
+            if (lists == null || lists.length == 0) return null;
+
+            return mergeKLists(lists, 0, lists.length - 1);
         }
 
-        private ListNode mergeKListsHelper(ListNode[] lists, int start, int end) {
-            if (start == end) {
-                return lists[start];
-            }
-            if (start + 1 == end) {
-                return merge(lists[start], lists[end]);
-            }
+        private ListNode mergeKLists(ListNode[] lists, int start, int end) {
+            if (start == end) return lists[start];
+
+            if (start + 1 == end) return merge(lists[start], lists[end]);
+
             int mid = start + (end - start) / 2;
-            ListNode left = mergeKListsHelper(lists, start, mid);
-            ListNode right = mergeKListsHelper(lists, mid + 1, end);
+            ListNode left = mergeKLists(lists, start, mid);
+            ListNode right = mergeKLists(lists, mid + 1, end);
             return merge(left, right);
         }
 
-        private ListNode merge(ListNode l1, ListNode l2) {
+        private ListNode merge(ListNode l, ListNode r) {
             ListNode dummy = new ListNode(0);
-            ListNode curr = dummy;
+            ListNode tail = dummy;
 
-            while (l1 != null && l2 != null) {
-                if (l1.val < l2.val) {
-                    curr.next = l1;
-                    l1 = l1.next;
+            while (l != null && r != null) {
+                if (l.val < r.val) {
+                    tail.next = l;
+                    l = l.next;
                 } else {
-                    curr.next = l2;
-                    l2 = l2.next;
+                    tail.next = r;
+                    r = r.next;
                 }
-                curr = curr.next;
+                tail = tail.next;
             }
 
-            curr.next = (l1 != null) ? l1 : l2;
+            if (l == null) {
+                tail.next = r;
+            } else {
+                tail.next = l;
+            }
 
             return dummy.next;
         }
