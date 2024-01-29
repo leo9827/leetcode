@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 给定一个整数数组,求这个数组可以组成的最长递增子序列的长度。
+ */
 public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
@@ -66,13 +69,14 @@ public class LongestIncreasingSubsequence {
         }
         return table.size();
     }
+
     public int lengthOfLISTabulation(int[] nums) {
         /*
         case [3,4,1,2,8,5,6]
         i=0 3 [3]
         i=1 4 [3], [*,4]
         i=2 1 [1], [*,4]
-        i=3 2 [1], [*,2]
+        i=3 2 [1], [*,2] // 这里 2和4比较,都是递增2位,取较小的值(递增的可能性更大)
         i=4 8 [1], [*,2], [*,2,8]
         i=5 5 [1], [*,2], [*,2,5]
         i=6 6 [1], [*,2], [*,2,5], [*,2,6]
@@ -95,10 +99,10 @@ public class LongestIncreasingSubsequence {
             }
             if (num > table.get(table.size() - 1)) table.add(num);
             else if (num == table.get(table.size() - 1)) ;
-            else // num < table
+            else // num < table.get(table.size() - 1)
             {
                 int i = 0;
-                while (table.get(i) < num) i++;
+                while (num > table.get(i)) { i++; }
                 table.set(i, num);
             }
         }
