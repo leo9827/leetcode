@@ -22,6 +22,37 @@ import java.util.List;
  */
 public class SortAnArray {
 
+    static class Solution1 {
+        public List<Integer> sortArray(int[] nums) {
+            List<Integer> res = new ArrayList<>();
+            if (nums == null || nums.length == 0) return res;
+            quickSort(nums, 0, nums.length-1);
+            for (int n : nums) res.add(n);
+            return res;       
+        }
+        private void quickSort(int nums, int lo, int hi) {
+            if (lo >  hi) return;
+            int mid = partition(nums, lo, hi);
+            quickSort(nums, lo, mid);
+            quickSort(nums, mid+1, hi);
+        } 
+        private int partition(int[] nums, int lo, int hi) {
+            int pivot = nums[lo]; // start from lo
+            while (lo < hi) {
+                while (lo < hi && nums[hi] >= pivot) {
+                    hi--;
+                }
+                nums[lo] = nums[hi]; // find first right > left
+                while (lo < hi && nums[lo] <= pivot) {
+                    lo++;
+                }
+                nums[hi] = nums[lo];
+            }
+            nums[lo] = pivot;
+            return lo;
+        }
+    }
+
     class QuickSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
