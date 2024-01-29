@@ -64,6 +64,29 @@ public class ThreeSum {
         return res;
     }
 
+    static class Solution {
+
+        public List<List<Integer>> threeSum3(int[] nums) {
+            Arrays.sort(nums);
+            List<List<Integer>> res = new ArrayList<>();
+            for (int i=0; i<nums.length-2; i++) {
+                int target = 0-nums[i];
+                int lo = i+1, hi=nums.length-1;
+                while (lo<hi) {
+                    if (target == nums[lo] + nums[hi]) {
+                        res.add(Arrays.asList(target, nums[lo], nums[hi]));
+                    } else if (target > nums[lo] + nums[hi]) {
+                        lo++;
+                    } else {
+                        hi--;
+                    }
+                }
+            }
+
+            return res;            
+        }
+    }
+
     public List<List<Integer>> threeSum3(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
@@ -77,13 +100,14 @@ public class ThreeSum {
                         while (lo < hi && nums[hi] == nums[hi-1]) hi--; // 跳过重复的值
                         lo++; hi--;
                     }
-                    else if (nums[lo] + nums[hi] < sum) lo++;
+                    else if (sum > nums[lo] + nums[hi]) lo++;
                     else hi--;
                 }
             }
         }
         return res;
     }
+
     public static void main(String[] args) {
         ThreeSum threeSum = new ThreeSum();
         List<List<Integer>> lists = threeSum.threeSum2(new int[]{-1, 0, 1, 2, -1, -4});

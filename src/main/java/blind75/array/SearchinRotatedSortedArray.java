@@ -43,6 +43,7 @@ public class SearchinRotatedSortedArray {
         }
         return -1;
     }
+    
     public int search2(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1;
         while (lo <= hi) {
