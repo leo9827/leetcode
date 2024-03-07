@@ -1,6 +1,7 @@
 package neetcode150.array;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <a href="https://leetcode.com/problems/contains-duplicate/">217存在重复元素</a>.
@@ -39,6 +40,22 @@ public class ContainsDuplicate {
                 return true;
             }
             set.add(num);
+        }
+        return false;
+    }
+    
+    public boolean containsDuplicate2(int[] nums) {
+        for (int i=0; i<nums.length-1; i++) {
+            if (nums[i] == nums[i+1]) {
+                return true;
+            }
+        }
+        Set<Integer> s = new HashSet<>();
+        for (int i: nums) {
+            if (s.contains(i)) {
+                return true;
+            }
+            s.add(i);
         }
         return false;
     }
