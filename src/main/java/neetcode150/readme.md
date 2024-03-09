@@ -23,7 +23,7 @@ Trapping Rain Water
 ## 1.2stack
 Valid Parentheses	
 Min Stack	
-Evaluate Reverse Polish Notation	
+Evaluate Reverse Polish 	
 Generate Parentheses	
 Daily Temperatures	
 Car Fleet	

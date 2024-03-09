@@ -83,4 +83,24 @@ public class CarFleet {
 
         return fleets;
     }
+
+    public int carFleet2(int target, int[] position, int[] speed) {
+        
+        float[] timecosts = new float[target+1]; // cal every position arrived target time costs. so need target length arr
+        for (int i=0; i<position.length; i++) {
+            int pos = position[i];
+            timecosts[pos] = (float)(target-pos) / speed[i];
+        }
+    
+        int fleets = 0;
+        float curmaxcost = 0;
+        for (int i=target; i>=0; i--) {  // from end to start
+            if (timecosts[i] > curmaxcost) { // if costtime > lastMax(position after cur,but time cost less cur), then, add new fleet
+                fleets++;
+                curmaxcost = timecosts[i];
+            }
+        }
+
+        return fleets;
+    }
 }

@@ -33,7 +33,7 @@ package neetcode150.binarysearch;
  * 输出：11
  * 解释：原数组为 [11,13,15,17] ，旋转 4 次得到输入数组。
  */
-public class FiMinimumInRotatedSortedArray {
+public class FindMinimumInRotatedSortedArray {
 
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return -1;

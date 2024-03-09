@@ -59,4 +59,18 @@ public class FindTheDuplicateNumber {
         int ans2 = 3;
         System.out.println(f.findDuplicate(case2) == ans2);
     }
+
+    static class Solution {
+        public int findDuplicate(int[] nums) {
+            boolean[] arr = new boolean[nums.length];
+            for (int i : nums) {
+                if (!arr[i]) {
+                    arr[i] = true;
+                } else {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
 }

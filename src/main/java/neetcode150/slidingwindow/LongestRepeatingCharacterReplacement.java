@@ -80,4 +80,30 @@ public class LongestRepeatingCharacterReplacement {
             return maxwin;
         }
     }
+    
+    static class Solution2 {
+        public int characterReplacement(String s, int k) {
+            int max = 0;
+            int wdstart = 0;
+            int wdend = 0;
+            int wdRepeatedMax = 0;
+            int[] table = new int[26];
+            for (; wdend<s.length(); wdend++) {
+    
+                char c = s.charAt(wdend);
+                table[c-'A']++; // current char count++
+                wdRepeatedMax = Math.max(wdRepeatedMax, table[c-'A']);
+
+                if (wdend-wdstart-wdRepeatedMax+1 > k) {
+                    table[s.charAt(wdstart)-'A']--; // windowstart need move, so wdstart's char count--
+                    wdstart++;
+                }
+    
+                max = Math.max(max, wdend-wdstart+1);
+            }
+    
+            return max;
+        }
+    }
+
 }
