@@ -2,6 +2,9 @@ package neetcode150.dp;
 
 import java.util.Objects;
 
+/**
+ * 
+ */
 public class LongestCommonSubsequence {
 
     public static void main(String[] args) {

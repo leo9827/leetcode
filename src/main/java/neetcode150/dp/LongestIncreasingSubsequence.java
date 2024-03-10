@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/longest-increasing-subsequence/
+ * 300. Longest Increasing Subsequence
+ * Medium 
+ */
 public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
@@ -95,10 +100,10 @@ public class LongestIncreasingSubsequence {
             }
             if (num > table.get(table.size() - 1)) table.add(num);
             else if (num == table.get(table.size() - 1)) ;
-            else // num < table
+            else // num < table.last
             {
                 int i = 0;
-                while (table.get(i) < num) i++;
+                while (table.get(i) < num) i++; // find first one in table > num
                 table.set(i, num);
             }
         }
