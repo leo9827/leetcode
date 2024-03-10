@@ -32,39 +32,40 @@ public class BinaryTreeRightSideView {
     private List<Integer> rightSideViewUsingDepthTravel(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         if (root  == null) return res;
-
-        depthTravel(res, root, 0);
+        depthTravel(root,res, 0);
         return res;
     }
-    private void depthTravel(List<Integer> res, TreeNode root, int depth) {
+
+    private void depthTravel(TreeNode root, List<Integer> res, int depth) {
         if (root == null) return;
 
         if (res.size() == depth) {
             res.add(root.val); // add every depth first node
         }
 
-        depthTravel(res, root.right, depth+1);
-        depthTravel(res, root.left, depth+1);
+        depthTravel(root.right, res, depth+1);
+        depthTravel(root.left,  res, depth+1);
     }
 
 
-
-    private List<Integer> rightSideViewUsingBFS(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        if (root  == null) return res;
-//        利用 BFS 进行层次遍历，记录下每层的最后一个元素。
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        while(!q.isEmpty()) {
-            int size = q.size(); //
-            for (int i=0; i < size; i++) {
-                TreeNode cur = q.poll();
-                if (cur.left != null) q.offer(cur.left);
-                if (cur.right != null) q.offer(cur.right);
-                if (i == size-1) res.add(cur.val);
+    static class Solution {
+        private List<Integer> rightSideViewUsingBFS(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            if (root  == null) return res;
+    //        利用 BFS 进行层次遍历，记录下每层的最后一个元素。
+            Queue<TreeNode> q = new LinkedList<>();
+            q.offer(root);
+            while(!q.isEmpty()) {
+                int size = q.size(); // 每层左右左右这样放进去
+                for (int i=0; i < size; i++) {
+                    TreeNode cur = q.poll();
+                    if (cur.left != null) q.offer(cur.left);
+                    if (cur.right != null) q.offer(cur.right);
+                    if (i == size-1) res.add(cur.val); // 每层的最后一个元素。
+                }
             }
+            return res;
         }
-        return res;
     }
 
     List<Integer> res = new ArrayList<>();

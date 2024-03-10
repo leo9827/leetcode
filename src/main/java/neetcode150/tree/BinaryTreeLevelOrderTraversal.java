@@ -3,6 +3,11 @@ package neetcode150.tree;
 
 import java.util.*;
 
+/**
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+ * 102. Binary Tree Level Order Traversal
+ * Medium
+ */
 public class BinaryTreeLevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
@@ -22,6 +27,25 @@ public class BinaryTreeLevelOrderTraversal {
         }
         levelsTravel(res, root.left, level + 1);
         levelsTravel(res, root.right, level + 1);
+    }
+
+    static class Solution {
+        public List<List<Integer>> levelOrder(TreeNode root) {
+            List<List<Integer>> list = new ArrayList<>();
+            if (root==null) return list;
+            leveltravel(root, list, 0);
+            return list;
+        }
+
+        public void leveltravel(TreeNode root, List<List<Integer>> list, int level) {
+            if (root==null) return;
+            if (list.size()<=level) {
+                list.add(new ArrayList<>());
+            }
+            list.get(level).add(root.val);
+            leveltravel(root.left, list, level+1);
+            leveltravel(root.right, list, level+1);
+        }
     }
 
     public List<List<Integer>> levelOrder1(TreeNode root) {

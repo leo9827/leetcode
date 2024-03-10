@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://leetcode.com/problems/combination-sum/description/
+ * 39. Combination Sum 
+ * Medium
+ */
 public class CombinationSum {
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
