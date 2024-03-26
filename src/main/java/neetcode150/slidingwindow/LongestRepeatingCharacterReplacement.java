@@ -31,14 +31,14 @@ public class LongestRepeatingCharacterReplacement {
     public int characterReplacement(String s, int k) {
         // AABABBA k = 1
         int maxWindowSize = Integer.MIN_VALUE;
+        int[] table = new int[26]; // 记录每个字符在当前窗口出现的次数
         int windowStart = 0;
-        int[] table = new int[26];
         int maxCount = Integer.MIN_VALUE;
         for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {
             char c = s.charAt(windowEnd);
             table[c - 'A']++;
-            maxCount = max(maxCount, table[c - 'A']);
-            while (windowEnd - windowStart + 1 - maxCount > k) {
+            maxCount = max(maxCount, table[c - 'A']); // 比较当前字符出现次数是否为最多的
+            while (windowEnd - windowStart + 1 - maxCount > k) { // 移动窗口
                 table[s.charAt(windowStart) - 'A']--;
                 windowStart++;
             }
