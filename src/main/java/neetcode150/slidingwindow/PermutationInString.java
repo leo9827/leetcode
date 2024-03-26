@@ -5,8 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
+https://leetcode.com/problems/permutation-in-string/description/
+567. Permutation in String, 567. 字符串的排列
+Medium
+
 Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
 In other words, return true if one of s1's permutations is the substring of s2.
+给你两个字符串 s1 和 s2 ，写一个函数来判断 s2 是否包含 s1 的排列。如果是，返回 true ；否则，返回 false 。
+换句话说，s1 的排列之一是 s2 的 子串 。
 
 Example 1:
 Input: s1 = "ab", s2 = "eidbaooo"
@@ -37,6 +43,7 @@ public class PermutationInString {
 
         int winBegin = 0;
         int winlen = s1.length();
+        // fixed window size!!!
         // window: front-back, front start from 0
         while(winlen < s2.length()){
             arr2[s2.charAt(winBegin) - 'a']--;
