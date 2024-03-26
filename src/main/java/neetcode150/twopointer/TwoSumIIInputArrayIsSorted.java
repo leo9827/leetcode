@@ -52,9 +52,25 @@ public class TwoSumIIInputArrayIsSorted {
             else if (sum > target)
                 right--;
             else
-                return new int[]{left + 1, right + 1};
+                return new int[]{left + 1, right + 1};  // because index need +1        
         }
 
+        return null;
+    }
+    
+    public int[] twoSum2(int[] sortedNumbers, int target) {
+        int lo = 0;
+        int hi = sortedNumbers.length-1;
+        while(lo <= hi) {
+            int sum = sortedNumbers[lo]+sortedNumbers[hi];
+            if (target == sum) {
+                return new int[]{lo+1, hi+1};
+            } else if(target > sum) {
+                lo++;
+            } else {
+                hi--;
+            }
+        }
         return null;
     }
 

@@ -42,4 +42,19 @@ public class ValidAnagram {
         }
         return true;
     }
+    // passed
+    public boolean isAnagram2(String s, String t) {
+        // use 1 arr
+        int[] freq = new int[26];
+        for (char c:s.toCharArray()) {
+            freq[c-'a']++;
+        }
+        for (char c:t.toCharArray()){
+            freq[c-'a']--;
+        }
+        for (int i=0; i<26; i++) {
+            if (freq[i]!=0) return false;
+        }
+        return true;
+    }
 }

@@ -48,9 +48,9 @@ public class LongestConsecutiveSequence {
                 // 因为是连续的，所以不论从哪个位置开始，都可以向左移动和向右移动来到达连续范围的起点和终点
                 int toMin = n - 1;
                 int toMax = n + 1;
-                while (tb.remove(toMin)) toMin--;
+                while (tb.remove(toMin)) toMin--; // 这里remove非常巧妙，避免了重复判断的问题，每次移除连续的一个段
                 while (tb.remove(toMax)) toMax++;
-                max = Math.max(max, toMax - toMin - 1);
+                max = Math.max(max, toMax - toMin - 1);  // because -- and ++ , so need -1
                 if (tb.isEmpty()) return max;
             }
 

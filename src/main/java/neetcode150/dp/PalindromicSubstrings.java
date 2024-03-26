@@ -3,6 +3,11 @@ package neetcode150.dp;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * https://leetcode.com/problems/palindromic-substrings/description/
+ * 647.Palindromic Substrings
+ * Medium
+ */
 public class PalindromicSubstrings {
 
     public static void main(String[] args) {
@@ -35,18 +40,22 @@ public class PalindromicSubstrings {
 
         return sss.size();
     }
-    public int countSubstringsDP(String s) {
-        int n = s.length();
-        int res = 0;
-        boolean[][] dp = new boolean[n][n];
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i; j < n; j++) {
-                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i  + 1 < 3 || dp[i + 1][j - 1]);
-                if(dp[i][j]) ++res;
+    
+    static class Solution{
+        public int countSubstringsDP(String s) {
+            int n = s.length();
+            int res = 0;
+            boolean[][] dp = new boolean[n][n];
+            for (int i = n - 1; i >= 0; i--) {
+                for (int j = i; j < n; j++) {
+                    dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i  + 1 < 3 || dp[i + 1][j - 1]);
+                    if(dp[i][j]) ++res;
+                }
             }
+            return res;
         }
-        return res;
     }
+
     int count = 0;
 
     public int countSubstrings2(String s) {

@@ -11,31 +11,35 @@ import java.util.List;
  * Example 1:
  * Input: nums = [5,2,3,1]
  * Output: [1,2,3,5]
- * Explanation: After sorting the array, the positions of some numbers are not changed (for example, 2 and 3), while the positions of other numbers are changed (for example, 1 and 5).
+ * Explanation: After sorting the array, the positions of some numbers are not changed (for example, 2 and 3),
+ * while the positions of other numbers are changed (for example, 1 and 5).
  * Example 2:
  * Input: nums = [5,1,1,2,0,0]
  * Output: [0,0,1,1,2,5]
- * Explanation: Note that the values of nums are not necessairly unique.
+ * Explanation: Note that the values of nums are not necessarily unique.
  * Constraints:
  * 1 <= nums.length <= 5 * 104
  * -5 * 104 <= nums[i] <= 5 * 104
  */
 public class SortAnArray {
 
-    static class Solution1 {
+    static class QuickSortSolution {
+
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
-            quickSort(nums, 0, nums.length-1);
+            quickSort(nums, 0, nums.length - 1);
             for (int n : nums) res.add(n);
-            return res;       
+            return res;
         }
-        private void quickSort(int nums, int lo, int hi) {
-            if (lo >  hi) return;
+
+        private void quickSort(int[] nums, int lo, int hi) {
+            if (lo > hi) return;
             int mid = partition(nums, lo, hi);
             quickSort(nums, lo, mid);
-            quickSort(nums, mid+1, hi);
-        } 
+            quickSort(nums, mid + 1, hi);
+        }
+
         private int partition(int[] nums, int lo, int hi) {
             int pivot = nums[lo]; // start from lo
             while (lo < hi) {
@@ -53,36 +57,7 @@ public class SortAnArray {
         }
     }
 
-    class QuickSortSolution {
-        public List<Integer> sortArray(int[] nums) {
-            List<Integer> res = new ArrayList<>();
-            if (nums == null || nums.length == 0) return res;
-            quickSort(nums, 0, nums.length - 1);
-            for (int i : nums) res.add(i);
-            return res;
-        }
-
-        private void quickSort(int[] nums, int l, int r) {
-            if (l >= r) return;
-            int mid = partition(nums, l, r);
-            quickSort(nums, l, mid);
-            quickSort(nums, mid + 1, r);
-        }
-
-        private int partition(int[] nums, int l, int r) {
-            int pivot = nums[l];
-            while (l < r) {
-                while (l < r && nums[r] >= pivot) r--;
-                nums[l] = nums[r];
-                while (l < r && nums[l] <= pivot) l++;
-                nums[r] = nums[l];
-            }
-            nums[l] = pivot;
-            return l;
-        }
-    }
-
-    class TopDownMergeSortSolution {
+    static class TopDownMergeSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
@@ -114,7 +89,7 @@ public class SortAnArray {
         }
     }
 
-    class BottomUpMergeSortSolution {
+    static class BottomUpMergeSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
@@ -147,7 +122,7 @@ public class SortAnArray {
         }
     }
 
-    class HeapSortSolution {
+    static class HeapSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
@@ -185,7 +160,7 @@ public class SortAnArray {
         }
     }
 
-    class SelectSortSolution {
+    static class SelectSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
@@ -211,7 +186,7 @@ public class SortAnArray {
         }
     }
 
-    class InsertionSolution {
+    static class InsertionSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;
@@ -236,7 +211,7 @@ public class SortAnArray {
         }
     }
 
-    class BubbleSortSolution {
+    static class BubbleSortSolution {
         public List<Integer> sortArray(int[] nums) {
             List<Integer> res = new ArrayList<>();
             if (nums == null || nums.length == 0) return res;

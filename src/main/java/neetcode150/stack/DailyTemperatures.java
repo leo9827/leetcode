@@ -2,6 +2,7 @@ package neetcode150.stack;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  *
@@ -73,5 +74,19 @@ public class DailyTemperatures {
             l.addLast(i);
         }
         return ans;
+    }
+    
+    public int[] dailyTemperatures1(int[] temperatures) {
+        Stack<Integer> stack = new Stack<>();
+        int[] ans = new int[temperatures.length];
+        for (int i = 0; i<temperatures.length; i++) {
+            while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+                int prevIndex = stack.pop();
+                ans[prevIndex] = i-prevIndex;
+            }
+            stack.push(i);
+        }
+        return ans;
+
     }
 }

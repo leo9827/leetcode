@@ -87,10 +87,10 @@ public class TopKFrequentElements {
                 table[max-n]++; // [0,3,2,1]
             }
 
-            List[] descSort = new List[nums.length];
+            List[] descSort = new List[nums.length]; // 可能存在相同 count 的 num, 所以count->num1,num2要存放一个list
             for (int i = 0; i < table.length; i++) {
+                int num = max - i; //  table[max-num]++; 的反向操作max-i=num  
                 int count = table[i];
-                int num = max - i;
 
                 if (descSort[count] == null) descSort[count] =  new ArrayList<Integer>();
                 descSort[count].add(num); // 可能存在相同 count 的 num, 所以这里没有选择kv

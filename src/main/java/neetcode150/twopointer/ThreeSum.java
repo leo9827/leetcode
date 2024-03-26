@@ -64,20 +64,26 @@ public class ThreeSum {
         return res;
     }
 
+    /**
+     * 思路：先排序，这样数组就是有序的了
+     * 从第1个数开始，拿住第1个数，然后在剩下的数组中尝试左右开弓找和，找到即为解
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum3(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
-        for (int i = 0; i < nums.length-2; i++) {
-            if (i == 0 || (i > 0 && nums[i] != nums[i-1])) {
-                int lo = i+1, hi = nums.length-1, sum = 0 - nums[i];
+        for (int i = 0; i < nums.length-2; i++) { // -2 是保留最后2个这个区间给 lo和hi 使用
+            if (i == 0 || (i > 0 && nums[i] != nums[i-1])) { // 重复的值就快速跳过
+                int lo = i+1, hi = nums.length-1, sum = 0 - nums[i]; // 左右开弓
                 while (lo < hi) {
-                    if (nums[lo] + nums[hi] == sum) {
+                    if (nums[lo] + nums[hi] == sum) { // 找到答案，保存
                         res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
                         while (lo < hi && nums[lo] == nums[lo+1]) lo++; // 跳过重复值
                         while (lo < hi && nums[hi] == nums[hi-1]) hi--; // 跳过重复的值
-                        lo++; hi--;
+                        lo++; hi--; // 尝试是否还有别的解答，比如sum=10， 19， 28都是解答， 需要找到lo>=hi为止
                     }
-                    else if (nums[lo] + nums[hi] < sum) lo++;
+                    else if (nums[lo] + nums[hi] < sum) lo++; // 小了， 左边增大，反之，右边降低
                     else hi--;
                 }
             }

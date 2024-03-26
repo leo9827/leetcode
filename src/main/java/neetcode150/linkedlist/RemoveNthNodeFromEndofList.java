@@ -17,6 +17,24 @@ import java.util.Stack;
  */
 public class RemoveNthNodeFromEndofList {
 
+    static class Solution {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode h = new ListNode(0); // [1],[0] 处理
+            h.next = head;
+            ListNode fast = h;
+            ListNode slow = h;
+            for (int i = 0; i < n; i++) {
+                fast = fast.next;
+            }
+            while (fast.next != null) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            slow.next = slow.next.next;
+            return h.next;
+        }
+    }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode start = new ListNode();
         start.next = head;
