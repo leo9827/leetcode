@@ -56,22 +56,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("anviaj"));
     }
 
-    static class Solution2 {
-        public int lengthOfLongestSubstring(String s) {
-            int max = 0;
-            int[] table = new int[128];
-            for (int index = 0, lastIndex = 0; index < s.length(); index++) {
-                char c = s.charAt(index);
-
-                lastIndex = Math.max(table[c], lastIndex);
-
-                max = Math.max(max, index - lastIndex + 1);
-
-                table[c] = index + 1;
-            }
-            return max;
-        }
-    }
 
     static class Solution3 {
         public int lengthOfLongestSubstring(String s) {
@@ -86,6 +70,23 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 end++;
             }
             return maxLength;
+        }
+    }
+    
+    static class Solution2 {
+        public int lengthOfLongestSubstring(String s) {
+            int max = 0;
+            int[] table = new int[128];
+            for (int index = 0, lastIndex = 0; index < s.length(); index++) {
+                char c = s.charAt(index);
+
+                lastIndex = Math.max(table[c], lastIndex);
+
+                max = Math.max(max, index - lastIndex + 1);
+
+                table[c] = index + 1;
+            }
+            return max;
         }
     }
 
