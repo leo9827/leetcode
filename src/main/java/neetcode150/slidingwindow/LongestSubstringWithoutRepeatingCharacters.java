@@ -56,6 +56,24 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("anviaj"));
     }
 
+    static class Solution4 {
+        // 思路: 滑动窗口
+        public int lengthOfLongestSubstring(String s) {
+            int maxLen = 0;  // 用于记录最长的子串长度
+            int[] table = new int[128];  // 用于记录字符出现的位置索引
+            int left = 0;  // 记录当前子串的起始位置
+
+            for (int i=0; i<s.length(); i++) {
+                char c = s.charAt(i);  // 获取字符串中的字符
+
+                left = Math.max(left, table[c]);  // 更新左边界，确保没有重复字符, table[c] 表示字符 c 上次出现的位置，left 取当前 left 和 table[c] 中的较大值
+                maxLen = Math.max(maxLen, i-left+1);  // 更新最大长度
+                table[c] = i+1;  // 记录字符出现的位置索引
+            }
+
+            return maxLen;  // 返回最长子串的长度
+        }
+    }
 
     static class Solution3 {
         public int lengthOfLongestSubstring(String s) {
