@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * https://leetcode.com/problems/combination-sum/description/
- * 39. Combination Sum 
- * Medium
+ * <a href="https://leetcode.com/problems/combination-sum/description/">39. Combination Sum .</a> <p>
+ * 39. Combination Sum <p>
+ * Medium <p>
  */
 public class CombinationSum {
 
@@ -33,7 +33,7 @@ public class CombinationSum {
     }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        List<List<Integer>> ans = new ArrayList<>();
         List<Integer> cur = new ArrayList<>();
         backtrack(candidates, target, ans, cur, 0);
         return ans;
