@@ -1,11 +1,11 @@
-package neetcode150;
+package neetcode150.interval;
 
 import java.util.Arrays;
 
 /**
- * https://leetcode.com/problems/non-overlapping-intervals/description/
- * 435. Non-overlapping Intervals
- * Medium
+ * <a href="https://leetcode.com/problems/non-overlapping-intervals/description/">435. Non-overlapping Intervals.</a></p>
+ * 435. Non-overlapping Intervals <p>
+ * Medium <p>
  * NonoverlappingIntervals
  */
 public class NonoverlappingIntervals {

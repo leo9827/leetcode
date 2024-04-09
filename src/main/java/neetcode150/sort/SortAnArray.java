@@ -1,4 +1,4 @@
-package neetcode150;
+package neetcode150.sort;
 
 import java.util.ArrayList;
 import java.util.List;
