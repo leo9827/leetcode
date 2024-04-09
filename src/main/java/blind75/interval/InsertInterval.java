@@ -18,26 +18,29 @@ public class InsertInterval {
         1__2 3__10 12__16
         */
         List<int[]> list = new ArrayList<>(intervals.length);
-        int idx = 0;
-        int st = newInterval[0], ed = newInterval[1];
+        int index = 0;
+        int left = newInterval[0], right = newInterval[1];
         //  segment1 区间结束值小于要插入的区间开始值，这部分直接加入到result中
-        while (idx < intervals.length && intervals[idx][1] < st) {
-            list.add(intervals[idx]);
-            idx++;
+        while (index < intervals.length && intervals[index][1] < left) { // intervals[index][1] < left 说明区间结束值小于要插入的区间开始值, 这部分直接加入到result中
+            list.add(intervals[index]);
+            index++;
         }
 
-        // segment2 区间的开始值是小于要插入区间的结尾值的，这部分需要进行合并
-        while (idx < intervals.length && intervals[idx][0] <= ed) {
-            st = Math.min(st, intervals[idx][0]);
-            ed = Math.max(ed, intervals[idx][1]);
-            idx++;
+        // segment2 区间的开始值是小于要新插入区间的结尾值的，
+        // 并且前面已经把结尾比left小的全部判断过了，
+        // 所以当前区间的开始肯定是肯定是>=left,然后结尾又<=right，故此当前区间和新插入区间有重合
+        // 这部分需要进行合并, 合并比较简单: 取较小的 left 和较大的 right
+        while (index < intervals.length && intervals[index][0] <= right) { // intervals[index][0] <= right 说明区间的开始值是小于新区间的结尾值，比如3__5 对上 4__8，说明有重合，这部分需要进行合并
+            left = Math.min(left, intervals[index][0]);
+            right = Math.max(right, intervals[index][1]);
+            index++;
         }
-        list.add(new int[]{st, ed});
+        list.add(new int[]{left, right});
 
         // segment3 区间的开始值是大于要插入区间的结尾值的，这部分直接加入到result中
-        while (idx < intervals.length) {
-            list.add(intervals[idx]);
-            idx++;
+        while (index < intervals.length) {
+            list.add(intervals[index]);
+            index++;
         }
         return list.toArray(new int[list.size()][]);
     }
