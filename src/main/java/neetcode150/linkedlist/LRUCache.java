@@ -2,11 +2,105 @@ package neetcode150.linkedlist;
 
 import java.util.Hashtable;
 
+/**
+ * <a href="https://leetcode.cn/problems/lru-cache/description/">146. LRU 缓存.</a>
+ * 中等
+ * 请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
+ * <p>
+ * 1 <= capacity <= 3000
+ * 0 <= key <= 10000
+ * 0 <= value <= 105
+ */
+class LRUCache2 {
+    private static class Node {
+        int key;
+        int val;
+        Node prev;
+        Node next;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+
+        public Node(int key, int val, Node prev, Node next) {
+            this.key = key;
+            this.val = val;
+            this.prev = prev;
+            this.next = next;
+        }
+    }
+
+    Node[] tb;
+    Node head;
+    Node tail;
+    int capacity;
+    int counter;
+
+    public LRUCache2(int capacity) {
+        tb = new Node[10001]; // key is 0 <= key <= 10000
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
+        counter = 0;
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        Node c = tb[key];
+        if (c == null) {
+            return -1;
+        } else {
+            delNode(c);
+            addNode(c);
+            return c.val;
+        }
+    }
+
+    private void delNode(Node n) {
+        n.prev.next = n.next;
+        n.next.prev = n.prev;
+    }
+
+    private void addNode(Node n) {
+        // add node to first
+        n.next = head.next;
+        head.next.prev = n;
+        head.next = n;
+        n.prev = head;
+    }
+
+    public void put(int key, int value) {
+        if (tb[key] != null) {
+            Node c = tb[key];
+            delNode(c);
+            c.val = value;
+            addNode(c);
+        } else {
+            Node n = new Node(key, value);
+            if (counter < capacity) {
+                counter++;
+                tb[key] = n;
+                addNode(n);
+            } else {
+                tb[tail.prev.key] = null;
+                delNode(tail.prev);
+
+                tb[key] = n;
+                addNode(n);
+            }
+        }
+    }
+
+}
+
 class LRUNode {
     int key;
     int val;
     LRUNode prev;
     LRUNode next;
+
     LRUNode(int key, int val) {
         this.key = key;
         this.val = val;
@@ -18,6 +112,7 @@ public class LRUCache {
     int cap, len;
     LRUNode head, tail;
     Hashtable<Integer, LRUNode> table;
+
     public LRUCache(int capacity) {
         this.cap = capacity;
         this.table = new Hashtable<>(capacity);
@@ -37,6 +132,7 @@ public class LRUCache {
         }
         return -1;
     }
+
     private void remove(LRUNode p) {
         LRUNode prev = p.prev;
         LRUNode next = p.next;
@@ -45,6 +141,7 @@ public class LRUCache {
         next.prev = prev;
         table.remove(p.key);
     }
+
     private void add(LRUNode p) {
         p.next = head.next;
         p.prev = head;
@@ -53,6 +150,7 @@ public class LRUCache {
         p.next.prev = p;
         table.put(p.key, p);
     }
+
     private LRUNode find(int key) {
         if (table.containsKey(key)) {
             return table.get(key);
